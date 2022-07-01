@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+  <%- include('partials/head') %>
+  <body class="h-full">
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-min">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div class="space-y-6">
+            <div class="text-center">
+              <img
+                src="https://res.cloudinary.com/ydevcloud/image/upload/v1656689819/t3ji7apwzfkotax96nfr.svg"
+                alt="check"
+                class="mx-auto h-24 w-20 text-gray-400"
+              />
+              <h2 class="font-medium text-gray-900 pb-1">File Uploaded</h2>
+              <a id="copyText" href="<%= fileLink %>" class="mt-1 text-5xs text-indigo-500">
+                <%= fileLink %>
+              </a>
+              <div class="mt-6">
+                <button
+                  type="button"
+                  onclick="copyLink()"
+                  class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ydevcloud/image/upload/v1656691144/qegfjfjs9f3g2kn71di9.svg"
+                    alt="copy"
+                    class="-ml-1 mr-2 h-5 w-5"
+                  />
+                  Copy link
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function copyLink() {
+        let copyText = document.getElementById("copyText");
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(copyText);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+      }
+    </script>
+  </body>
+</html>
